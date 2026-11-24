@@ -4,7 +4,7 @@
     {
       "id": "pinci",
       "title": "天天拼词园",
-      "description": "从一个汉字里描出藏着的常用字；后花园练部首与结构。",
+      "description": "从一个汉字里描出藏着的常用字；千字文园每字一关；后花园练部首与结构。",
       "icon": "拼",
       "path": "modules/pinci/",
       "enabled": true,

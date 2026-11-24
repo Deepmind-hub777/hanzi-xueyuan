@@ -6,8 +6,8 @@
     try {
       if (id === 'pinci') {
         var s = JSON.parse(localStorage.getItem('hzxy.pinci.v1') || 'null'); if (!s || !s.G) return '';
-        var m = Object.keys((s.G.main || {}).cleared || {}).length, b = Object.keys((s.G.bushou || {}).cleared || {}).length;
-        return (m || b) ? '主园已过 ' + m + ' 关 · 后花园已过 ' + b + ' 关' : '';
+        var n = function (g) { return Object.keys((s.G[g] || {}).cleared || {}).length; }, m = n('main'), q = n('qz'), b = n('bushou');
+        return (m || q || b) ? '主园 ' + m + ' · 千字文园 ' + q + ' · 后花园 ' + b + ' 关已过' : '';
       }
     } catch (e) {}
     return '';

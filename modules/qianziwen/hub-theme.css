@@ -30,3 +30,5 @@ a,button,select,input{-webkit-tap-highlight-color:transparent}
 .quiz-options button.is-correct{background:#e5f2dc;border-color:#5f8f45;color:#24461a;opacity:1}
 .quiz-options button.is-wrong{background:#f8e1dc;border-color:#b5402f;color:#7a2418;opacity:1}
 @media (prefers-reduced-motion:reduce){.cue-pulse:not(:disabled){animation:none!important;box-shadow:0 0 0 3px #e0c08f}}
+.hub-link-hand{color:#9a7b55;font-size:.78rem}
+.hub-link-row a[href*="#qz="]{background:#fbefd6;border-color:#c9a26a;color:#5a3a12;font-weight:600}

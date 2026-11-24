@@ -1,5 +1,7 @@
 /* 书法体：钟齐志莽行书 Zhi Mang Xing（SIL OFL 1.1，见 fonts/OFL-ZhiMangXing.txt），已按页面用字子集化 */
 @font-face{font-family:"Brush";src:url("fonts/callig.woff2?v=6") format("woff2");font-display:swap}
+/* 「千」用马善政体（与汉字学园首页一致）：志莽行书的「千」形近「仐」 */
+@font-face{font-family:"BrushQian";src:url("../../shared/fonts/hub-brush-qian.woff2") format("woff2");unicode-range:U+5343;font-display:swap}
 :root{
   --bg1:#f4f1e4; --bg2:#e7efe6; --paper:#fbf8ee; --card:#fffdf6;
   --ink:#2a2119; --ink2:#5d5040; --ink3:#9a8b74; --line:#e0cfae;
@@ -177,7 +179,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.5;
 /* ================= v5：书法标题 + 正文字体 + UI 细修（参照 UI UX Pro Max 清单） ================= */
 :root{
   --font-ui:"PingFang SC","HarmonyOS Sans SC","MiSans","Noto Sans SC","Source Han Sans SC","Noto Sans CJK SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;
-  --font-callig:"Brush","STXingkai","Xingkai SC","KaiTi",serif;
+  --font-callig:"BrushQian","Brush","STXingkai","Xingkai SC","KaiTi",serif;
   --font-kai:"Kaiti SC","STKaiti","KaiTi","LXGW WenKai","Noto Serif CJK SC","Source Han Serif SC","Songti SC",serif;
   --ink3:#7a6b55;          /* 次要文字：对比度 ≥4.5:1 */
   --fs-xs:12px; --fs-sm:13px; --fs-md:15px; --fs-lg:17px;
@@ -546,3 +548,7 @@ html.in-hub .toast{top:calc(42% + 24px)}
 .acts .btn{min-width:0}
 .btn#selall.on{background:linear-gradient(180deg,#efe0c2,#e2cda4);box-shadow:inset 0 2px 4px rgba(90,60,20,.25);transform:translateY(1px)}
 @media (max-width:420px){.acts{gap:8px}.acts .btn{letter-spacing:.06em;font-size:17px}.btn .cost{margin-left:2px}}
+/* 汉字学园：三个园（主园 / 千字文园 / 后花园） */
+.gtabs{width:min(94%,400px)}
+.gtab{font-size:21px}
+@media (max-width:360px){.gtab{font-size:18px}}

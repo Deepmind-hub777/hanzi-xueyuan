@@ -2,7 +2,7 @@ import { createWritingSurface } from './writing.js';
 import { detectAudioEnvironment, playClip } from './audio.js';
 import { createQuiz, answerQuiz } from './quiz.js';
 import { getPageCount, getPageEntries } from './pagination.js';
-import { renderHubLinks } from './hub-links.js';
+import { renderHubLinks } from './hub-links.js?v=3';
 
 const $ = (selector) => document.querySelector(selector);
 const audio = $('#audio-player');
