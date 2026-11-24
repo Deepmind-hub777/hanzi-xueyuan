@@ -1,0 +1,53 @@
+@font-face{font-family:"HubBrush";src:url("shared/fonts/hub-brush.woff2") format("woff2");font-display:swap}
+/* 「千」用马善政体：志莽行书的「千」形近「仐」，初学者容易认错 */
+@font-face{font-family:"HubBrush";src:url("shared/fonts/hub-brush-qian.woff2") format("woff2");unicode-range:U+5343;font-display:swap}
+:root{--ink:#2b231b;--muted:#7a6a55;--paper:#f3ead7;--line:#d9c7a6;--accent:#8a5d2c;--red:#b5402f;
+  --kai:"KaiTi","STKaiti","Kaiti SC","Noto Serif CJK SC","Songti SC",serif;--brush:"HubBrush","KaiTi","STKaiti",serif;
+  --sans:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;min-height:100dvh;color:var(--ink);font-family:var(--sans);
+  background:var(--paper) radial-gradient(ellipse at 50% 0,#fffaf0 0,#f3ead7 70%) fixed}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.35;
+  background-image:radial-gradient(rgba(120,90,50,.08) 1px,transparent 1px);background-size:5px 5px}
+.hub{position:relative;width:min(100% - 32px,1080px);margin:0 auto;
+  padding:calc(28px + env(safe-area-inset-top)) env(safe-area-inset-right) calc(24px + env(safe-area-inset-bottom)) env(safe-area-inset-left)}
+.hub-head{text-align:center;margin-bottom:22px}
+.hub-seal{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:10px;background:var(--red);color:#fff7ea;
+  font-family:var(--brush);font-size:36px;line-height:1;box-shadow:0 3px 0 #8e2f22;transform:rotate(-4deg)}
+.hub-head h1{font-family:var(--brush);font-weight:400;font-size:clamp(48px,12vw,84px);line-height:1.1;margin:10px 0 2px;letter-spacing:.06em}
+.hub-sub{margin:0;color:var(--muted);letter-spacing:.3em;font-size:15px}
+.hub-grid{display:grid;grid-template-columns:1fr;gap:16px}
+.card{position:relative;display:flex;flex-direction:column;gap:10px;padding:20px;border-radius:22px;background:rgba(255,252,245,.86);
+  border:1px solid var(--line);box-shadow:0 8px 24px rgba(80,60,30,.08);color:inherit;text-decoration:none}
+.card-main{display:flex;gap:16px;align-items:center;color:inherit;text-decoration:none;border-radius:16px;min-height:44px}
+.card-main:focus-visible,.card-links a:focus-visible{outline:3px solid #b77f3e;outline-offset:3px}
+.card-icon{flex:none;display:flex;align-items:center;justify-content:center;width:72px;height:72px;border-radius:18px;
+  background:linear-gradient(160deg,#fffaf0,#efdfbf);border:1px solid #cdb185;font-family:var(--brush);font-size:46px;color:#5b3f1f;line-height:1}
+.card-title{display:block;font-family:var(--brush);font-weight:400;font-size:32px;line-height:1.15}
+.card-desc{display:block;margin-top:4px;font-size:15px;line-height:1.55;color:#4d4236}
+.card-badge{display:inline-block;margin-top:6px;padding:2px 10px;border-radius:99px;border:1px solid #c69e69;color:#714b23;font-size:12px}
+.card-meta{font-size:13px;color:var(--muted)}
+.card-links{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.card-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:22px;border:1px solid #b89a71;background:#fffaf1;
+  color:#5b3f1f;text-decoration:none;font-size:15px}
+.card-links a:hover{background:#f1e3c6}
+.card-links a.primary{background:#6b4b25;border-color:#6b4b25;color:#fffaf1}
+.card-links a.primary:hover{background:#573c1d}
+.card-main:hover .card-icon{transform:translateY(-2px)}
+.card-icon{transition:transform .2s ease}
+.hub-foot{margin-top:26px;text-align:center;color:var(--muted);font-size:13px;line-height:1.7}
+.hub-foot p{margin:0}
+.hub-foot a{color:var(--accent);display:inline-flex;align-items:center;min-height:44px}
+.hub-error{padding:20px;border-radius:16px;background:#fff3ef;border:1px solid #e3b4a6}
+@media (min-width:700px){.hub-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.card{padding:24px}}
+@media (min-width:700px) and (orientation:portrait){
+  body{display:flex;align-items:center}
+  .hub{width:min(100% - 64px,680px);padding-top:calc(40px + env(safe-area-inset-top))}
+  .hub-head{margin-bottom:40px}.hub-seal{width:64px;height:64px;font-size:44px}
+  .hub-grid{grid-template-columns:1fr;gap:24px}.card{padding:30px 30px 26px;gap:16px}
+  .card-icon{width:104px;height:104px;font-size:66px;border-radius:24px}.card-title{font-size:42px}.card-desc{font-size:18px}
+  .card-links a{min-height:52px;padding:0 22px;font-size:17px;border-radius:26px}}
+@media (orientation:landscape) and (max-height:560px){.hub{padding-top:calc(14px + env(safe-area-inset-top))}.hub-head h1{font-size:44px}.hub-head{margin-bottom:12px}.hub-seal{display:none}}
+@media (min-width:1500px) and (min-height:900px){.hub{width:min(100% - 64px,1240px);padding-top:80px}.card{padding:30px}.card-title{font-size:40px}.card-desc{font-size:17px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}

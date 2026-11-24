@@ -1,0 +1,43 @@
+/* 汉字学园首页：读 modules.json，按 order 排序，只显示 enabled:true 的模块。 */
+(function () {
+  var grid = document.getElementById('hub-grid');
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function progress(id) {
+    try {
+      if (id === 'pinci') {
+        var s = JSON.parse(localStorage.getItem('hzxy.pinci.v1') || 'null'); if (!s || !s.G) return '';
+        var m = Object.keys((s.G.main || {}).cleared || {}).length, b = Object.keys((s.G.bushou || {}).cleared || {}).length;
+        return (m || b) ? '主园已过 ' + m + ' 关 · 后花园已过 ' + b + ' 关' : '';
+      }
+    } catch (e) {}
+    return '';
+  }
+  fetch('modules.json', { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error('modules.json ' + r.status); return r.json(); })
+    .then(function (cfg) {
+      if (cfg.site) {
+        if (cfg.site.title) { document.getElementById('hub-title').textContent = cfg.site.title; }
+        if (cfg.site.subtitle) document.getElementById('hub-sub').textContent = cfg.site.subtitle;
+      }
+      var mods = (cfg.modules || []).filter(function (m) { return m.enabled !== false; })
+        .sort(function (a, b) { return (a.order || 0) - (b.order || 0); });
+      grid.replaceChildren();
+      mods.forEach(function (m) {
+        var card = el('article', 'card'); card.id = 'mod-' + m.id;
+        var main = el('a', 'card-main'); main.href = m.path;
+        var icon = el('span', 'card-icon', m.icon || m.title.charAt(0)); icon.setAttribute('aria-hidden', 'true');
+        var txt = el('span', 'card-text');
+        txt.append(el('span', 'card-title', m.title), el('span', 'card-desc', m.description || ''));
+        if (m.badge) txt.append(el('span', 'card-badge', m.badge));
+        main.append(icon, txt); card.append(main);
+        var p = progress(m.id); if (p) card.append(el('p', 'card-meta', p));
+        var links = (m.links && m.links.length) ? m.links : [{ title: '进入', path: m.path }];
+        var ul = el('ul', 'card-links');
+        links.forEach(function (l, i) { var li = el('li'); var a = el('a', i === 0 ? 'primary' : '', l.title); a.href = l.path; li.append(a); ul.append(li); });
+        card.append(ul); grid.append(card);
+      });
+    })
+    .catch(function (e) {
+      grid.replaceChildren(el('p', 'hub-error', '模块清单载入失败：' + e.message));
+      console.error(e);
+    });
+})();
