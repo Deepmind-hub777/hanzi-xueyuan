@@ -18,7 +18,7 @@
     '.hubbar a.hubbar-back:focus-visible{box-shadow:0 0 0 3px #b77f3e}' +
     '.hubbar svg{width:20px;height:20px;flex:none}' +
     '.hubbar .hubbar-brand{font-family:"HubBrush","KaiTi","STKaiti",serif;font-size:22px;line-height:1}' +
-    '.hubbar .hubbar-title{flex:0 0.01 auto;min-width:0;margin-left:auto;font-family:"HubBrush","KaiTi","STKaiti",serif;font-size:21px;color:#2b231b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:4px}' +
+    '.hubbar .hubbar-title{flex:none;margin-left:auto;font-family:"HubBrush","KaiTi","STKaiti",serif;font-size:21px;color:#2b231b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:4px}' +
     /* 手机：返回链接和标题永不换行；空间不够时先缩登录按钮（昵称省略），再缩字号 */
     '@media (max-width:480px){.hubbar{gap:4px}.hubbar a.hubbar-back{gap:4px;padding:0 8px 0 4px}.hubbar .hubbar-brand{font-size:19px}.hubbar .hubbar-title{font-size:19px}.hubbar .hubbar-title.long{font-size:16px}}' +
     '@media (max-width:359px){.hubbar a.hubbar-back{padding:0 4px 0 0;min-width:0}.hubbar svg{width:18px;height:18px}.hubbar .hubbar-brand{font-size:16px}.hubbar .hubbar-title{font-size:16px}.hubbar .hubbar-title.long{font-size:14px}}' +
