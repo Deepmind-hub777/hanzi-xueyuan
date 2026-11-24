@@ -12,6 +12,7 @@
     } catch (e) {}
     return '';
   }
+  window.addEventListener('hzxy-progress', function () { var c = document.getElementById('mod-pinci'); if (!c) return; var p = progress('pinci'), m = c.querySelector('.card-meta'); if (!p) return; if (!m) { m = el('p', 'card-meta'); c.querySelector('.card-main').after(m); } m.textContent = p; });
   fetch('modules.json', { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error('modules.json ' + r.status); return r.json(); })
     .then(function (cfg) {
       if (cfg.site) {
