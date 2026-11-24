@@ -7,10 +7,10 @@
   <meta name="theme-color" content="#f3ead7">
   <title>千字文 · 学习</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="hub-theme.css">
+  <link rel="stylesheet" href="hub-theme.css?v=2">
   <script src="../../shared/hubbar.js" data-hub="../../" data-title="千字文"></script>
   <script src="vendor/hanzi-writer.min.js" defer></script>
-  <script type="module" src="src/main.js"></script>
+  <script type="module" src="src/main.js?v=2"></script>
 </head>
 <body>
   <header class="page-head">
@@ -84,6 +84,7 @@
       <div class="quiz-controls"><span id="quiz-progress" aria-live="polite">第 1 / 10 題</span><button type="button" id="quiz-play">播放題目</button><span>積分 <strong id="score">0</strong></span><button type="button" id="quiz-next" disabled>下一題</button></div>
       <div class="quiz-options" id="quiz-options"></div>
       <p class="status" id="quiz-feedback" role="status" aria-live="polite"></p>
+      <p class="quiz-hint" id="quiz-hint" aria-live="polite"></p>
     </section>
   </main>
   <footer><span>每天認識一組文字</span></footer>

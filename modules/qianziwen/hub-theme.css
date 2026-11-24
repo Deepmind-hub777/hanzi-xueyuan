@@ -22,3 +22,11 @@ a,button,select,input{-webkit-tap-highlight-color:transparent}
 .hub-link-row a:focus-visible{box-shadow:0 0 0 3px #b77f3e}
 @media (max-width:760px){.hub-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:360px){.hub-links{grid-template-columns:1fr}}
+/* 聽音辨字：提示下一步該點哪個按鈕 */
+.quiz-hint{margin:8px 0 0;padding:10px 14px;border-radius:12px;background:#fff6e3;border:1px dashed #d1b07f;color:#5b3f1f;font-size:.98rem;line-height:1.5}
+.quiz-hint:empty{display:none}
+.cue-pulse:not(:disabled){border-color:#8a5d2c;background:#6b4b25;color:#fffaf1;box-shadow:0 0 0 0 rgba(138,93,44,.45);animation:cuePulse 1.6s ease-in-out infinite}
+@keyframes cuePulse{0%{box-shadow:0 0 0 0 rgba(138,93,44,.5)}70%{box-shadow:0 0 0 12px rgba(138,93,44,0)}100%{box-shadow:0 0 0 0 rgba(138,93,44,0)}}
+.quiz-options button.is-correct{background:#e5f2dc;border-color:#5f8f45;color:#24461a;opacity:1}
+.quiz-options button.is-wrong{background:#f8e1dc;border-color:#b5402f;color:#7a2418;opacity:1}
+@media (prefers-reduced-motion:reduce){.cue-pulse:not(:disabled){animation:none!important;box-shadow:0 0 0 3px #e0c08f}}
