@@ -9,10 +9,24 @@
         var n = function (g) { return Object.keys((s.G[g] || {}).cleared || {}).length; }, m = n('main'), q = n('qz'), b = n('bushou');
         return (m || q || b) ? '主园 ' + m + ' · 千字文园 ' + q + ' · 后花园 ' + b + ' 关已过' : '';
       }
+      if (id === 'lfx') {
+        var x = JSON.parse(localStorage.getItem('hzxy.lfx.v1') || 'null');
+        if (!x || !x.seen) return '';
+        var total = 0;
+        Object.keys(x.seen).forEach(function (p) { total += Object.keys(x.seen[p] || {}).length; });
+        return total ? '已看 ' + total + ' 集' : '';
+      }
     } catch (e) {}
     return '';
   }
-  window.addEventListener('hzxy-progress', function () { var c = document.getElementById('mod-pinci'); if (!c) return; var p = progress('pinci'), m = c.querySelector('.card-meta'); if (!p) return; if (!m) { m = el('p', 'card-meta'); c.querySelector('.card-main').after(m); } m.textContent = p; });
+  function refreshCard(id) {
+    var c = document.getElementById('mod-' + id); if (!c) return;
+    var p = progress(id), meta = c.querySelector('.card-meta');
+    if (!p) { if (meta) meta.textContent = ''; return; }
+    if (!meta) { meta = el('p', 'card-meta'); c.querySelector('.card-main').after(meta); }
+    meta.textContent = p;
+  }
+  window.addEventListener('hzxy-progress', function () { refreshCard('pinci'); refreshCard('lfx'); });
   fetch('modules.json', { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error('modules.json ' + r.status); return r.json(); })
     .then(function (cfg) {
       if (cfg.site) {
