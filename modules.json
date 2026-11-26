@@ -48,18 +48,18 @@
       "title": "故事台阶",
       "description": "按级选系列、按集看故事。每集配练习、词汇、游戏、打印四件，点开直接进官网；不用另建账号，用学园昵称登录即可保存进度。",
       "icon": "故",
-      "path": "https://restless-bar-5a2f.zhajray.workers.dev/",
+      "path": "modules/lfx/",
       "enabled": true,
       "order": 30,
       "badge": "官网四件套需小狐狸账号",
       "links": [
         {
           "title": "开始读故事",
-          "path": "https://restless-bar-5a2f.zhajray.workers.dev/"
+          "path": "modules/lfx/"
         },
         {
           "title": "我的进度",
-          "path": "https://restless-bar-5a2f.zhajray.workers.dev/progress.html"
+          "path": "modules/lfx/progress.html"
         }
       ]
     }
