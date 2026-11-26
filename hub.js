@@ -1,4 +1,8 @@
-/* 汉字学园首页：读 modules.json，按 order 排序，只显示 enabled:true 的模块。 */
+/* 汉字学园首页：读 modules.json，按 order 排序，只显示 enabled 不为 false 的学习模块。
+   type 为 "external" 的条目留给以后的页脚次级外链（另一个站、独立登录、新窗口打开，不接账号脚本、不读对方数据）。
+   本文件不渲染这种条目，以免变成第四张模块卡或页脚上的可见链接。清单里目前没有这种条目。
+   将来启用时再在页脚另画，不要放进 .hub-grid。条目可写成：
+   { "id":"ext", "type":"external", "enabled":false, "title":"", "href":"", "order":100 } */
 (function () {
   var grid = document.getElementById('hub-grid');
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
@@ -23,7 +27,11 @@
     var c = document.getElementById('mod-' + id); if (!c) return;
     var p = progress(id), meta = c.querySelector('.card-meta');
     if (!p) { if (meta) meta.textContent = ''; return; }
-    if (!meta) { meta = el('p', 'card-meta'); c.querySelector('.card-main').after(meta); }
+    if (!meta) {
+      meta = el('p', 'card-meta');
+      var links = c.querySelector('.card-links');
+      if (links) c.insertBefore(meta, links); else c.append(meta);
+    }
     meta.textContent = p;
   }
   window.addEventListener('hzxy-progress', function () { refreshCard('pinci'); refreshCard('lfx'); });
@@ -33,7 +41,7 @@
         if (cfg.site.title) { document.getElementById('hub-title').textContent = cfg.site.title; }
         if (cfg.site.subtitle) document.getElementById('hub-sub').textContent = cfg.site.subtitle;
       }
-      var mods = (cfg.modules || []).filter(function (m) { return m.enabled !== false; })
+      var mods = (cfg.modules || []).filter(function (m) { return m.enabled !== false && m.type !== "external"; })
         .sort(function (a, b) { return (a.order || 0) - (b.order || 0); });
       grid.replaceChildren();
       mods.forEach(function (m) {
@@ -42,8 +50,8 @@
         var icon = el('span', 'card-icon', m.icon || m.title.charAt(0)); icon.setAttribute('aria-hidden', 'true');
         var txt = el('span', 'card-text');
         txt.append(el('span', 'card-title', m.title), el('span', 'card-desc', m.description || ''));
-        if (m.badge) txt.append(el('span', 'card-badge', m.badge));
         main.append(icon, txt); card.append(main);
+        if (m.badge) card.append(el('p', 'card-badge', m.badge));
         var p = progress(m.id); if (p) card.append(el('p', 'card-meta', p));
         var links = (m.links && m.links.length) ? m.links : [{ title: '进入', path: m.path }];
         var ul = el('ul', 'card-links');

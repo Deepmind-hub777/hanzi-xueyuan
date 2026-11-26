@@ -6,7 +6,7 @@
   var title = me.getAttribute('data-title') || '';
   var css = document.createElement('style');
   css.textContent =
-    '@font-face{font-family:"HubBrush";src:url("' + hub + 'shared/fonts/hub-brush.woff2") format("woff2");font-display:swap}' +
+    '@font-face{font-family:"HubBrush";src:url("' + hub + 'shared/fonts/hub-brush.woff2?v=2") format("woff2");font-display:swap}' +
     '@font-face{font-family:"HubBrush";src:url("' + hub + 'shared/fonts/hub-brush-qian.woff2") format("woff2");unicode-range:U+5343;font-display:swap}' +
     ':root{--hubbar-h:calc(48px + env(safe-area-inset-top,0px))}' +
     'body.in-hub{padding-top:var(--hubbar-h)!important}' +
