@@ -3,7 +3,7 @@
   var ZH = {
     "about.compare": "这里是公开页面的目录。",
     "about.did": "这里有级别、系列、集号、外链、本地勾选和界面语言。",
-    "about.not": "课文、音频、练习和绘本仍在第三方官方站。用那边的昵称，可以把看过的进度记到别的设备上。",
+    "about.not": "课文、音频、练习和绘本仍在第三方官方站。用学园昵称登录后，看过的进度会保存，并同步到其他设备。Quiz、词汇、游戏、打印需要在第三方官方站登录。",
     "about.page": "单集没有单独地址。打开后到的是该集所在的系列页，页码用底表里的地址，没有另算。",
     "about.parts": "卡片底部的 Quiz、词汇、游戏、打印是链接，需要登录第三方官方站。文和听不单独列出。",
     "about.thumb": "缩略图仍在原地址。加载失败时只留下灰色占位，不把图片存进本站。",
@@ -110,9 +110,9 @@
     return wrap;
   }
 
-  function tri(key) {
+  function tri(key, role) {
     var code = lang();
-    var node = el("p", "tri-main", line(code, key) || line("en", key));
+    var node = el("p", role === "title" ? "page-title" : "copy", line(code, key) || line("en", key));
     node.lang = code === "zh" ? "zh-Hans" : code;
     return node;
   }
@@ -492,7 +492,7 @@
     });
     hero.appendChild(wall);
     var copy = el("div", "hero-copy");
-    copy.appendChild(tri("home.lead"));
+    copy.appendChild(tri("home.lead", "title"));
     hero.appendChild(copy);
     root.appendChild(hero);
     var steps = el("ol", "stepbar");
@@ -520,7 +520,7 @@
     var pre = el("a", "card");
     pre.href = "level.html?track=pre";
     var preBody = el("div", "pad");
-    preBody.appendChild(tri("level.pre"));
+    preBody.appendChild(tri("level.pre", "title"));
     preBody.appendChild(el("p", "meta", countText(DATA.prerequisite.series_count, DATA.prerequisite.episode_count)));
     pre.appendChild(preBody);
     root.appendChild(pre);
@@ -544,7 +544,7 @@
       root.appendChild(el("p", null, t("common.missing")));
       return;
     }
-    root.appendChild(track === "pre" ? tri("level.pre") : levelTitle(level));
+    root.appendChild(track === "pre" ? tri("level.pre", "title") : levelTitle(level));
     if (track === "pre") root.appendChild(tri("common.prereq_note"));
     var episodes = rows.reduce(function (sum, row) { return sum + row.episode_count; }, 0);
     root.appendChild(el("p", "meta", countText(rows.length, episodes) + " · " + t("common.seen") + " " + countSeen(rows) + "/" + episodes));
@@ -741,7 +741,7 @@
   }
 
   function renderProgress(root) {
-    root.appendChild(tri("progress.title"));
+    root.appendChild(tri("progress.title", "title"));
     var readers = progressGroup(t("profile.label"));
     renderProfiles(readers);
     root.appendChild(readers);
@@ -766,7 +766,7 @@
 
   function renderOfficial() {
     var box = el("section", "progress-group official");
-    box.appendChild(tri("official.title"));
+    box.appendChild(tri("official.title", "title"));
     box.appendChild(tri("official.hint"));
     var link = el("a", "block", t("official.action"));
     link.href = "https://chinese.littlefox.com/en/login";
@@ -778,7 +778,7 @@
 
   function renderRecordExport() {
     var box = el("section", "record-export progress-group");
-    box.appendChild(tri("export.title"));
+    box.appendChild(tri("export.title", "title"));
     var hint = tri("export.hint");
     hint.classList.add("export-hint");
     box.appendChild(hint);
@@ -899,10 +899,10 @@
   }
 
   function renderSignup(root) {
-    root.appendChild(tri("signup.title"));
-    root.appendChild(tri("signup.why_title"));
+    root.appendChild(tri("signup.title", "title"));
+    root.appendChild(tri("signup.why_title", "title"));
     root.appendChild(tri("signup.why"));
-    root.appendChild(tri("signup.steps_title"));
+    root.appendChild(tri("signup.steps_title", "title"));
     var list = el("div", "steps");
     ["signup.step1", "signup.step2", "signup.step3"].forEach(function (key) {
       var step = el("div", "step");
@@ -910,7 +910,7 @@
       list.appendChild(step);
     });
     root.appendChild(list);
-    root.appendChild(tri("signup.remind_title"));
+    root.appendChild(tri("signup.remind_title", "title"));
     root.appendChild(tri("signup.remind"));
     var open = el("a", "open");
     open.appendChild(tri("signup.open"));
@@ -923,7 +923,7 @@
   }
 
   function renderAbout(root) {
-    root.appendChild(tri("about.title"));
+    root.appendChild(tri("about.title", "title"));
     ["about.compare", "about.did", "about.not", "about.page", "about.parts", "about.thumb"].forEach(function (key) {
       root.appendChild(tri(key));
     });
