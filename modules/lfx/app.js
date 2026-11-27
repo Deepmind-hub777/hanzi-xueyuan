@@ -404,6 +404,7 @@
     img.alt = "";
     img.loading = "lazy";
     img.decoding = "async";
+    img.referrerPolicy = "no-referrer";
     img.addEventListener("error", function () {
       img.remove();
       placeholder();
