@@ -1,6 +1,29 @@
 {
-  "site": { "title": "汉字学园", "subtitle": "拼字 · 识字 · 读经典" },
+  "site": {
+    "title": "汉字学园",
+    "subtitle": "拼字 · 识字 · 读经典"
+  },
   "modules": [
+    {
+      "id": "lfx",
+      "title": "故事台阶",
+      "description": "按级选系列、按集看故事。每集配练习、词汇、游戏、打印四件，点开直接进官网；不用另建账号，用学园昵称登录即可保存进度。",
+      "icon": "故",
+      "path": "modules/lfx/",
+      "enabled": true,
+      "order": 10,
+      "badge": "官网四件套需第三方官方站账号",
+      "links": [
+        {
+          "title": "开始读故事",
+          "path": "modules/lfx/"
+        },
+        {
+          "title": "我的进度",
+          "path": "modules/lfx/progress.html"
+        }
+      ]
+    },
     {
       "id": "pinci",
       "title": "天天拼词园",
@@ -8,9 +31,12 @@
       "icon": "拼",
       "path": "modules/pinci/",
       "enabled": true,
-      "order": 10,
+      "order": 20,
       "links": [
-        { "title": "主园 · 字中找字", "path": "modules/pinci/" }
+        {
+          "title": "主园 · 字中找字",
+          "path": "modules/pinci/"
+        }
       ]
     },
     {
@@ -20,12 +46,21 @@
       "icon": "千",
       "path": "modules/qianziwen/",
       "enabled": true,
-      "order": 20,
+      "order": 30,
       "badge": "拼音与释义仍待校订",
       "links": [
-        { "title": "互动学习", "path": "modules/qianziwen/" },
-        { "title": "循序听读", "path": "modules/qianziwen/site/index.html" },
-        { "title": "为什么学《千字文》", "path": "modules/qianziwen/site/why-qianziwen.html" }
+        {
+          "title": "互动学习",
+          "path": "modules/qianziwen/"
+        },
+        {
+          "title": "循序听读",
+          "path": "modules/qianziwen/site/index.html"
+        },
+        {
+          "title": "为什么学《千字文》",
+          "path": "modules/qianziwen/site/why-qianziwen.html"
+        }
       ]
     }
   ]

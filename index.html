@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f3ead7">
-<meta name="description" content="汉字学园：天天拼词园（字中找字、部首与结构）和《千字文》慢速听读、笔顺描红，一站学汉字。">
+<meta name="description" content="汉字学园：故事台阶、天天拼词园（字中找字、部首与结构）和《千字文》慢速听读、笔顺描红。">
 <title>汉字学园 · 拼字 识字 读经典</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%238a5d2c%22/%3E%3Ctext x=%2250%22 y=%2272%22 font-size=%2264%22 text-anchor=%22middle%22 fill=%22white%22%3E%E5%AD%A6%3C/text%3E%3C/svg%3E">
-<link rel="preload" href="shared/fonts/hub-brush.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="shared/fonts/hub-brush.woff2?v=2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="hub.css">
-<script src="hub.js?v=3" defer></script>
-<script src="shared/account.js?v=2" data-sync="pinci=hzxy.pinci.v1,qianziwen=hzxy.qianziwen.v1" data-place="#hzac-slot"></script>
+<script src="hub.js?v=4" defer></script>
+<script src="shared/account.js?v=2" data-sync="pinci=hzxy.pinci.v1,qianziwen=hzxy.qianziwen.v1,lfx=hzxy.lfx.v1" data-place="#hzac-slot"></script>
 </head>
 <body>
 <main class="hub">
@@ -22,8 +22,47 @@
   </header>
   <section class="hub-grid" id="hub-grid" aria-label="学习模块">
     <noscript>
-      <a class="card" href="modules/pinci/"><span class="card-title">天天拼词园</span></a>
-      <a class="card" href="modules/qianziwen/"><span class="card-title">千字文</span></a>
+      <article class="card">
+        <a class="card-main" href="modules/lfx/">
+          <span class="card-icon" aria-hidden="true">故</span>
+          <span class="card-text">
+            <span class="card-title">故事台阶</span>
+            <span class="card-desc">按级选系列、按集看故事。每集配练习、词汇、游戏、打印四件，点开直接进官网；不用另建账号，用学园昵称登录即可保存进度。</span>
+          </span>
+        </a>
+        <p class="card-badge">官网四件套需第三方官方站账号</p>
+        <ul class="card-links">
+          <li><a class="primary" href="modules/lfx/">开始读故事</a></li>
+          <li><a href="modules/lfx/progress.html">我的进度</a></li>
+        </ul>
+      </article>
+      <article class="card">
+        <a class="card-main" href="modules/pinci/">
+          <span class="card-icon" aria-hidden="true">拼</span>
+          <span class="card-text">
+            <span class="card-title">天天拼词园</span>
+            <span class="card-desc">从一个汉字里描出藏着的常用字；千字文园每字一关；后花园练部首与结构。</span>
+          </span>
+        </a>
+        <ul class="card-links">
+          <li><a class="primary" href="modules/pinci/">主园 · 字中找字</a></li>
+        </ul>
+      </article>
+      <article class="card">
+        <a class="card-main" href="modules/qianziwen/">
+          <span class="card-icon" aria-hidden="true">千</span>
+          <span class="card-text">
+            <span class="card-title">千字文</span>
+            <span class="card-desc">250 组四字句：慢速朗读、拼音、释义、插画、笔顺描红、听音辨字。</span>
+          </span>
+        </a>
+        <p class="card-badge">拼音与释义仍待校订</p>
+        <ul class="card-links">
+          <li><a class="primary" href="modules/qianziwen/">互动学习</a></li>
+          <li><a href="modules/qianziwen/site/index.html">循序听读</a></li>
+          <li><a href="modules/qianziwen/site/why-qianziwen.html">为什么学《千字文》</a></li>
+        </ul>
+      </article>
     </noscript>
   </section>
   <footer class="hub-foot">

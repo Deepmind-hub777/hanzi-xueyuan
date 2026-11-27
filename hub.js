@@ -1,4 +1,8 @@
-/* 汉字学园首页：读 modules.json，按 order 排序，只显示 enabled:true 的模块。 */
+/* 汉字学园首页：读 modules.json，按 order 排序，只显示 enabled 不为 false 的学习模块。
+   type 为 "external" 的条目留给以后的页脚次级外链（另一个站、独立登录、新窗口打开，不接账号脚本、不读对方数据）。
+   本文件不渲染这种条目，以免变成第四张模块卡或页脚上的可见链接。清单里目前没有这种条目。
+   将来启用时再在页脚另画，不要放进 .hub-grid。条目可写成：
+   { "id":"ext", "type":"external", "enabled":false, "title":"", "href":"", "order":100 } */
 (function () {
   var grid = document.getElementById('hub-grid');
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
@@ -9,17 +13,35 @@
         var n = function (g) { return Object.keys((s.G[g] || {}).cleared || {}).length; }, m = n('main'), q = n('qz'), b = n('bushou');
         return (m || q || b) ? '主园 ' + m + ' · 千字文园 ' + q + ' · 后花园 ' + b + ' 关已过' : '';
       }
+      if (id === 'lfx') {
+        var x = JSON.parse(localStorage.getItem('hzxy.lfx.v1') || 'null');
+        if (!x || !x.seen) return '';
+        var total = 0;
+        Object.keys(x.seen).forEach(function (p) { total += Object.keys(x.seen[p] || {}).length; });
+        return total ? '已看 ' + total + ' 集' : '';
+      }
     } catch (e) {}
     return '';
   }
-  window.addEventListener('hzxy-progress', function () { var c = document.getElementById('mod-pinci'); if (!c) return; var p = progress('pinci'), m = c.querySelector('.card-meta'); if (!p) return; if (!m) { m = el('p', 'card-meta'); c.querySelector('.card-main').after(m); } m.textContent = p; });
+  function refreshCard(id) {
+    var c = document.getElementById('mod-' + id); if (!c) return;
+    var p = progress(id), meta = c.querySelector('.card-meta');
+    if (!p) { if (meta) meta.textContent = ''; return; }
+    if (!meta) {
+      meta = el('p', 'card-meta');
+      var links = c.querySelector('.card-links');
+      if (links) c.insertBefore(meta, links); else c.append(meta);
+    }
+    meta.textContent = p;
+  }
+  window.addEventListener('hzxy-progress', function () { refreshCard('pinci'); refreshCard('lfx'); });
   fetch('modules.json', { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error('modules.json ' + r.status); return r.json(); })
     .then(function (cfg) {
       if (cfg.site) {
         if (cfg.site.title) { document.getElementById('hub-title').textContent = cfg.site.title; }
         if (cfg.site.subtitle) document.getElementById('hub-sub').textContent = cfg.site.subtitle;
       }
-      var mods = (cfg.modules || []).filter(function (m) { return m.enabled !== false; })
+      var mods = (cfg.modules || []).filter(function (m) { return m.enabled !== false && m.type !== "external"; })
         .sort(function (a, b) { return (a.order || 0) - (b.order || 0); });
       grid.replaceChildren();
       mods.forEach(function (m) {
@@ -28,8 +50,8 @@
         var icon = el('span', 'card-icon', m.icon || m.title.charAt(0)); icon.setAttribute('aria-hidden', 'true');
         var txt = el('span', 'card-text');
         txt.append(el('span', 'card-title', m.title), el('span', 'card-desc', m.description || ''));
-        if (m.badge) txt.append(el('span', 'card-badge', m.badge));
         main.append(icon, txt); card.append(main);
+        if (m.badge) card.append(el('p', 'card-badge', m.badge));
         var p = progress(m.id); if (p) card.append(el('p', 'card-meta', p));
         var links = (m.links && m.links.length) ? m.links : [{ title: '进入', path: m.path }];
         var ul = el('ul', 'card-links');
