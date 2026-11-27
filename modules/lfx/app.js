@@ -1,11 +1,11 @@
 (function () {
   var DATA = window.LINKS;
   var ZH = {
-    "about.compare": "这是对比用的目录壳，不作为学生端。",
+    "about.compare": "这里是公开页面的目录。",
     "about.did": "这里有级别、系列、集号、外链、本地勾选和界面语言。",
-    "about.not": "没有把课文、音频、练习或绘本放进本站，也没有课程页、判分、登录或支付。",
+    "about.not": "课文、音频、练习和绘本仍在第三方官方站。用那边的昵称，可以把看过的进度记到别的设备上。",
     "about.page": "单集没有单独地址。打开后到的是该集所在的系列页，页码用底表里的地址，没有另算。",
-    "about.parts": "有 Quiz 或打印时才是链接。词、文、听、星仍是一行字，不能点。",
+    "about.parts": "卡片底部的 Quiz、词汇、游戏、打印是链接，需要登录第三方官方站。文和听不单独列出。",
     "about.thumb": "缩略图仍在原地址。加载失败时只留下灰色占位，不把图片存进本站。",
     "about.title": "关于",
     "common.about": "关于",
@@ -28,7 +28,7 @@
     "common.progress": "进度",
     "common.seen": "已看",
     "common.series": "系列",
-    "common.source": "来源：Little Fox Chinese（公开免费页）",
+    "common.source": "来源：第三方官方站（公开免费页）",
     "common.thai_review": "待泰籍中文老师审校",
     "common.total": "底表",
     "install.add": "用浏览器菜单把这个目录加到主屏幕。",

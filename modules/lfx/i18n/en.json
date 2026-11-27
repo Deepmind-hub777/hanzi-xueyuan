@@ -1,9 +1,9 @@
 {
-  "about.compare": "This catalog shell is for comparison, not for students.",
+  "about.compare": "This is a catalog of publicly available pages.",
   "about.did": "It has levels, series, episode numbers, outbound links, local checkmarks, and interface language.",
-  "about.not": "Stories, audio, exercises, and printable books are not stored here. There is no lesson page, scoring, sign-in, or payment.",
+  "about.not": "Stories, audio, exercises, and printable books stay on the third-party official site. A nickname there can save progress across devices.",
   "about.page": "An episode has no address of its own. Open goes to the series page stored in the table. That address is copied, not recalculated.",
-  "about.parts": "Quiz and Print are links when the table marks them. Words, Text, Audio, and Star stay as one line of text.",
+  "about.parts": "Quiz, Words, Game, and Print are links at the bottom of a card and need a sign-in on the third-party official site. Text and Audio are not listed separately.",
   "about.thumb": "Thumbnails stay at their original address. If one fails, a drawn book placeholder is shown. The image is not saved here.",
   "about.title": "About",
   "common.about": "About",
@@ -27,7 +27,7 @@
   "common.progress": "Progress",
   "common.seen": "Seen",
   "common.series": "series",
-  "common.source": "Source: Little Fox Chinese (public pages)",
+  "common.source": "Source: the third-party official site (public pages)",
   "common.thai_review": "待泰籍中文老师审校",
   "common.total": "Table",
   "home.flow1": "1. Pick a level",
@@ -79,7 +79,7 @@
   "signup.why_title": "Why register",
   "theme.toDark": "Dark",
   "theme.toLight": "Light",
-  "official.title": "Little Fox account",
-  "official.hint": "Quiz, Words, Game and Print open on the official site, so the official account uses its own email + password. Sign in there once; this device stays signed in. We never store that password.",
-  "official.action": "Open official sign-in"
+  "official.title": "the third-party official site account",
+  "official.hint": "Quiz, Words, Game and Print open on the third-party official site, so the third-party official site account uses its own email and password. Sign in there once; this device stays signed in. We never store that password.",
+  "official.action": "Open third-party official site sign-in"
 }

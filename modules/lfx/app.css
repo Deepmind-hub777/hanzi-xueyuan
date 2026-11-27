@@ -1,6 +1,33 @@
 * { box-sizing: border-box; }
 
+@font-face {
+  font-family: HubBrush;
+  src: url("fonts/hub-brush.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: HubBrush;
+  src: url("fonts/hub-brush-qian.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+5343;
+  font-display: block;
+}
+@font-face {
+  font-family: HubBrush;
+  src: url("fonts/hub-brush-extra.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+4E8B, U+4E8E, U+5173, U+53F0, U+6545, U+7B2C, U+7EA7, U+9636;
+  font-display: block;
+}
+
 :root {
+  --sans: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans Thai", "Leelawadee UI", sans-serif;
+  --kai: "KaiTi", "STKaiti", "Kaiti TC", "Kaiti SC", "BiauKai", "TW-Kai", "Noto Serif CJK TC", "Songti TC", serif;
+  --brush: "HubBrush", var(--kai);
   --bg: #fff6ec;
   --surface: #ffffff;
   --ink: #1a2332;
@@ -48,7 +75,7 @@ html {
 body {
   margin: 0;
   overflow-x: hidden;
-  font: 17px/1.5 system-ui, -apple-system, "Segoe UI", "Noto Sans Thai", "Leelawadee UI", Tahoma, sans-serif;
+  font: 17px/1.5 var(--sans);
   background: var(--bg);
   color: var(--ink);
   padding-bottom: 16px;
@@ -596,6 +623,14 @@ body.has-tabs { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
 }
 .meter-fill { height: 100%; background: var(--primary); }
 .field-label { display: block; margin-top: 10px; font-size: 0.9rem; font-weight: 650; }
+.brand,
+.tabs a,
+.tabs button,
+.grid.levels .tri-main {
+  font-family: var(--brush);
+  font-weight: 400;
+}
+.tri-sub { font-family: var(--kai); }
 .progress-group { margin-top: 28px; }
 .group-title { margin: 0 0 10px; font-size: 1.05rem; font-weight: 750; }
 .record-export.progress-group { margin-top: 32px; padding-top: 4px; }
